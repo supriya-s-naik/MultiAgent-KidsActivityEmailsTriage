@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+mcp_server/credentials.json
+mcp_server/token.json
+
+# Local Claude Code session config, not part of the project
+.claude/
+
+# Course materials / local notes, not for the public repo
+*.docx
+~$*

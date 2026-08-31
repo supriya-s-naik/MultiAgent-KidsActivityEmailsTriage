@@ -1,0 +1,22 @@
+{
+  "e01": {"is_activity": true,  "needs_action": false, "note": "soccer schedule change - informational, just show up at new time/place"},
+  "e02": {"is_activity": true,  "needs_action": true,  "note": "permission slip - sign + pay by deadline"},
+  "e03": {"is_activity": true,  "needs_action": true,  "note": "teacher explicitly asks for a reply"},
+  "e04": {"is_activity": true,  "needs_action": true,  "note": "payment due"},
+  "e05": {"is_activity": false, "needs_action": false, "note": "decoy: retail marketing"},
+  "e06": {"is_activity": false, "needs_action": false, "note": "decoy: fitness app notification"},
+  "e07": {"is_activity": false, "needs_action": false, "note": "decoy: unrelated work email"},
+  "e08": {"is_activity": true,  "needs_action": true,  "note": "reply needed with uniform size"},
+  "e09": {"is_activity": true,  "needs_action": true,  "note": "must sign up for a conference slot"},
+  "e10": {"is_activity": true,  "needs_action": false, "note": "edge case: cancellation/makeup, but 'no action needed if Saturday works'"},
+  "e11": {"is_activity": true,  "needs_action": false, "note": "registration open but no deadline pressure ('no rush')"},
+  "e12": {"is_activity": false, "needs_action": false, "note": "decoy: retail cart abandonment email"},
+  "e13": {"is_activity": true,  "needs_action": false, "note": "edge case: vague subject 'Important update', but body says no response needed"},
+  "e14": {"is_activity": false, "needs_action": false, "note": "decoy: LinkedIn notification"},
+  "e15": {"is_activity": true,  "needs_action": true,  "note": "explicit RSVP requested"},
+  "e16": {"is_activity": true,  "needs_action": false, "note": "edge case: vague subject 'Update', but no forms/action needed"},
+  "e17": {"is_activity": false, "needs_action": false, "note": "decoy: Spotify receipt"},
+  "e18": {"is_activity": true,  "needs_action": true,  "note": "aftercare payment past due"},
+  "e19": {"is_activity": false, "needs_action": false, "note": "decoy: work HR enrollment"},
+  "e20": {"is_activity": true,  "needs_action": false, "note": "positive update, no changes, no action"}
+}
