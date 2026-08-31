@@ -103,16 +103,20 @@ async def activity_check(
     # synchronous, so it must run in a worker thread -- calling it directly
     # would block the event loop and stall the gateway heartbeat, risking a
     # disconnect (this is exactly what happened before this fix).
-    await interaction.response.defer(thinking=True)
+    #
+    # ephemeral=True: this digest contains a child's activity/email details,
+    # so only the person who ran the command should see the reply -- not
+    # everyone else in the channel (Discord doesn't restrict who can run a
+    # slash command by default, so this is the privacy boundary).
+    await interaction.response.defer(thinking=True, ephemeral=True)
 
     query = _build_gmail_query(days, since, until, sender, keyword)
     emails = await fetch_emails(query=query)
     digest = await asyncio.to_thread(build_digest, emails, False)
 
     chunks = chunk_message(digest, 2000)
-    await interaction.followup.send(chunks[0])
-    for chunk in chunks[1:]:
-        await interaction.channel.send(chunk)
+    for chunk in chunks:
+        await interaction.followup.send(chunk, ephemeral=True)
 
 
 if __name__ == "__main__":
