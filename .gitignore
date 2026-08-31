@@ -11,3 +11,6 @@ mcp_server/token.json
 # Course materials / local notes, not for the public repo
 *.docx
 ~$*
+
+# Local demo recordings - too large for a normal git push (GitHub's limit is 100MB)
+*.mp4
