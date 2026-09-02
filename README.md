@@ -145,6 +145,13 @@ search operators (no extra LLM call, so they don't add latency):
   whose body can run past 100K characters (no `text/plain` part).
   `gmail_real.py` caps each body at `MAX_BODY_CHARS` so LLM calls stay
   fast and cheap.
+- **Paginated fetch, not a single page.** A bounded query like
+  `newer_than:2d` can match more than one Gmail list page in a noisy
+  inbox, and a relevant email can sort behind a burst of newsletters —
+  stopping at the first page can silently drop it before the classifier
+  ever sees it. `gmail_real.py` pages via `nextPageToken` up to
+  `MAX_TOTAL_RESULTS` (a safety cap, not unlimited), fetching messages
+  concurrently to keep it fast.
 
 ## Metric: recall
 
@@ -155,9 +162,10 @@ here.
 
 ## Known limitations / possible next steps
 
-- Real Gmail fetch is capped at `MAX_RESULTS` matching messages, no
-  pagination — fine for a personal inbox digest, but a larger mailbox or
-  wider query would need real pagination via `nextPageToken`.
+- Real Gmail fetch is still capped at `MAX_TOTAL_RESULTS` matching
+  messages (a safety limit across all pages), not truly unlimited — a
+  wider query than that cap covers would need raising the constant or
+  looping runs.
 - No rate-limit/backoff handling beyond what the Gmail and OpenAI/Nebius
   SDKs do by default.
 - No persistence layer — every run is stateless (reprocesses whatever
